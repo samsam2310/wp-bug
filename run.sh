@@ -1,8 +1,13 @@
 #/bin/sh
 
 node_modules/.bin/webpack-dev-server &
+pid=$!
+
+sleep 5
 
 curl -I localhost:8080/test.wasm
+
+kill $pid
 
 # HTTP/1.1 200 OK
 # X-Powered-By: Express
